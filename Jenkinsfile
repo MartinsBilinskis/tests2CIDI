@@ -100,10 +100,12 @@ def deploy(String envName, String port) {
 
 def runTests(String envName) {
     echo "Starting tests for ${envName} environment..."
+    // Vajadzigs citadak noņem pm2 mapi
     dir('api-tests') {
         git branch: 'main', url: 'https://github.com/mtararujs/course-js-api-framework'
         withEnv(['CI=true']) {
             pwsh 'npm install'
+            // Nepieciešams uz windows citadak nolago konsole un tests neiziet
             sleep 5
             bat "npm run greetings greetings_${envName}"
         }
