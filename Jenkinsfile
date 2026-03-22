@@ -37,7 +37,7 @@ pipeline {
         stage('tests-on-stg') {
             steps {
                 script {
-                    runTests('STG')
+                    runTests('stg')
                 }
             }
         }
@@ -52,7 +52,7 @@ pipeline {
         stage('tests-on-preprod') {
             steps {
                 script {
-                    runTests('PREPROD')
+                    runTests('preprod')
                 }
             }
         }
@@ -61,7 +61,7 @@ pipeline {
         stage('deploy-to-prod') {
             steps {
                 script {
-                    deploy('PROD', '7004')
+                    deploy('prod', '7004')
                 }
             }
         }
