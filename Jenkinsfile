@@ -95,7 +95,7 @@ def deploy(String envName, String port) {
     
     pwsh '& "pm2" delete "greetings-app-${envName}"; if ($LASTEXITCODE -ne 0) { exit 0 }'
     
-    pwsh 'pm2 start "venv\\Scripts\\python.exe" --name "greetings-app-${envName}" "--" app.py --port ${port}'
+    pwsh "pm2 start 'venv\\Scripts\\python.exe' --name 'greetings-app-${envName}' '--' app.py --port ${port}"
 }
 
 def runTests(String envName) {
