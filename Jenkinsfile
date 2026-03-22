@@ -84,9 +84,9 @@ def installDependencies() {
     
     pwsh 'ls'
     
-    bat 'python3 -m venv venv'
-    bat 'venv\\Scripts\\Activate.ps1'
-    bat 'pip install -r requirements.txt'
+    pwsh 'python -m venv venv'
+    pwsh 'venv\\Scripts\\Activate.ps1'
+    pwsh 'pip install -r requirements.txt'
 }
 
 def deploy(String envName, String port) {
