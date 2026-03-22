@@ -19,8 +19,60 @@ pipeline {
                 }
             }
         }
-    }
+        stage('tests-on-dev') {
+            steps {
+                script {
+                    runTests('dev')
+                }
+            }
+        }
 
+        stage('deploy-to-stg') {
+            steps {
+                script {
+                    deploy('stg', '7002')
+                }
+            }
+        }
+        stage('tests-on-stg') {
+            steps {
+                script {
+                    runTests('stg')
+                }
+            }
+        }
+
+        stage('deploy-to-preprod') {
+            steps {
+                script {
+                    deploy('preprod', '7003')
+                }
+            }
+        }
+        stage('tests-on-preprod') {
+            steps {
+                script {
+                    runTests('preprod')
+                }
+            }
+        }
+
+        // --- PROD VIDE ---
+        stage('deploy-to-prod') {
+            steps {
+                script {
+                    deploy('prod', '7004')
+                }
+            }
+        }
+        stage('tests-on-prod') {
+            steps {
+                script {
+                    runTests('prod')
+                }
+            }
+        }
+    }
 }
 
 // --- FUNKCIJU DEFINĪCIJAS ---
