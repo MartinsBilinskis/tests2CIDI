@@ -22,7 +22,7 @@ pipeline {
         stage('tests-on-dev') {
             steps {
                 script {
-                    runTests('DEV')
+                    runTests('dev')
                 }
             }
         }
