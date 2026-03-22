@@ -105,7 +105,7 @@ def runTests(String envName) {
 
         pwsh 'npm install'
         sleep 5
-        pwsh "npm run greetings greetings_${envName}"
+        bat "npm run greetings greetings_${envName}"
     }
 }
 
