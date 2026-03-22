@@ -104,6 +104,7 @@ def runTests(String envName) {
         git branch: 'main', url: 'https://github.com/mtararujs/course-js-api-framework'
         withEnv(['CI=true']) {
             pwsh 'npm install'
+            sleep 5
             bat "npm run greetings greetings_${envName}"
         }
     }
