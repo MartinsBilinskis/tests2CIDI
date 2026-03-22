@@ -80,7 +80,7 @@ pipeline {
 def installDependencies() {
     echo "Installing all required dependencies"
 
-    git 'https://github.com/mtararujs/python-greetings'
+    git branch: 'main', url: 'https://github.com/mtararujs/python-greetings'
     
     pwsh 'ls'
     
@@ -91,7 +91,7 @@ def installDependencies() {
 
 def deploy(String envName, String port) {
     echo "Deploying application to ${envName} environment on port ${port}..."
-    git 'https://github.com/mtararujs/python-greetings'
+    git branch: 'main', url: 'https://github.com/mtararujs/python-greetings'
     
     pwsh '& "pm2" delete "greetings-app-${envName}"; if ($LASTEXITCODE -ne 0) { exit 0 }'
     
@@ -101,7 +101,7 @@ def deploy(String envName, String port) {
 def runTests(String envName) {
     echo "Starting tests for ${envName} environment..."
     // Klonējam testu repozitoriju
-    git 'https://github.com/mtararujs/course-js-api-framework'
+    git branch: 'main', url: 'https://github.com/mtararujs/course-js-api-framework'
     
     // Instalējam testu atkarības
     pwsh 'npm install'
