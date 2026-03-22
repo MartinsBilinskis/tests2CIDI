@@ -102,9 +102,9 @@ def runTests(String envName) {
     echo "Starting tests for ${envName} environment..."
     dir('api-tests') {
         git branch: 'main', url: 'https://github.com/mtararujs/course-js-api-framework'
-        
+
         pwsh 'npm install'
-        
+        sleep 5
         pwsh "npm run greetings greetings_${envName}"
     }
 }
