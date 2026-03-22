@@ -100,13 +100,12 @@ def deploy(String envName, String port) {
 
 def runTests(String envName) {
     echo "Starting tests for ${envName} environment..."
-    // Klonējam testu repozitoriju
-    git branch: 'main', url: 'https://github.com/mtararujs/course-js-api-framework'
-    
-    // Instalējam testu atkarības
-    pwsh 'npm install'
-    
-    // Palaižam testus konkrētajai videi
-    pwsh "npm run greetings greetings_${envName}"
+    dir('api-tests') {
+        git branch: 'main', url: 'https://github.com/mtararujs/course-js-api-framework'
+        
+        pwsh 'npm install'
+        
+        pwsh "npm run greetings greetings_${envName}"
+    }
 }
 
