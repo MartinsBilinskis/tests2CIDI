@@ -85,7 +85,7 @@ def installDependencies() {
     pwsh 'ls'
     
     pwsh 'python3 -m venv venv'
-    pwsh 'venv\Scripts\Activate.ps1'
+    pwsh 'venv\\Scripts\\Activate.ps1'
     pswh 'pip install -r requirements.txt'
 }
 
@@ -95,7 +95,7 @@ def deploy(String envName, String port) {
     
     pwsh '& "pm2" delete "greetings-app-${envName}"; if ($LASTEXITCODE -ne 0) { exit 0 }'
     
-    pwsh 'pm2 start "venv\Scripts\python.exe" --name "greetings-app-${envName}" "--" app.py --port ${port}'
+    pwsh 'pm2 start "venv\\Scripts\\python.exe" --name "greetings-app-${envName}" "--" app.py --port ${port}'
 }
 
 def runTests(String envName) {
