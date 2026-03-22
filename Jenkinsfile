@@ -93,9 +93,9 @@ def deploy(String envName, String port) {
     echo "Deploying application to ${envName} environment on port ${port}..."
     git branch: 'main', url: 'https://github.com/mtararujs/python-greetings'
     
-    pwsh 'npx pm2 delete "greetings-app-${envName}" if (\$LASTEXITCODE -ne 0) { exit 0 }'
+    pwsh """npx pm2 delete "greetings-app-${envName}" if (\$LASTEXITCODE -ne 0) { exit 0 }"""
     
-    pwsh 'npx pm2 start ./venv/Scripts/python.exe --name "greetings-app-${envName}" -- app.py --port ${port}'
+    pwsh """npx pm2 start ./venv/Scripts/python.exe --name "greetings-app-${envName}" -- app.py --port ${port}"""
 }
 
 def runTests(String envName) {
